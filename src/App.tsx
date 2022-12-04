@@ -4,7 +4,12 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-     Hello, samurai! Let's go!
+     <ul>
+         <li>CSS</li>
+         <li>JS</li>
+         <li>HTML</li>
+         <li>REACT</li>
+     </ul>
     </div>
   );
 }
