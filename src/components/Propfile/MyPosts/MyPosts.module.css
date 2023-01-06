@@ -1,0 +1,17 @@
+
+.item {
+    color: blueviolet;
+}
+
+.item img {
+    width: 150px;
+    height: 150px;
+}
+
+.postBlock {
+    padding: 10px;
+}
+
+.posts {
+    margin-top: 10px;
+}

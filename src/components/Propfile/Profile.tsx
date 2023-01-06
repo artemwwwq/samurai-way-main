@@ -1,18 +1,27 @@
 import React from "react";
 import s from './Profile.module.css'
 import MyPosts from "./MyPosts/MyPosts";
+import ProfileInfo from "./PropfileInfo/ProfileInfo";
+import {PostPropsType} from "./MyPosts/Post/Posts";
 
-function Profile() {
-    return <div className={s.content}>
+type AppPropsType = {
+    posts: Array<PostPropsType>
+    addPost: (postMessage: string)=>void
+}
+
+
+
+
+function Profile(props: AppPropsType) {
+
+
+
+    return (
         <div>
-            <img src="https://devby.io/storage/images/59/38/59/11/derived/05ff293929e38a14973ba4cf1c59269d.jpg"
-             alt=""/>
+            <ProfileInfo/>
+            <MyPosts posts={props.posts} addPost={props.addPost}/>
         </div>
-        <div>
-            ava + discription
-        </div>
-        <MyPosts />
-        </div>
-        }
+    )
+}
 
 export default Profile;
