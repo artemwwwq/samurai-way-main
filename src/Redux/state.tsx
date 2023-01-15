@@ -19,11 +19,12 @@ export type PostPropsType ={
     like: number
 }
 
-type ProfilePageType = {
+export type ProfilePageType = {
     posts: Array<PostPropsType>
+    newPostText: string
 }
 
-type MessagePageType = {
+export type MessagePageType = {
 
         messages: Array<MessagesType>
         dialogs: Array<DialogsType>
@@ -44,6 +45,7 @@ export const state:RootStateType = {
             {id: 1, message: 'Hi, how are my posts! ', like: 12},
             {id: 2, message: 'Its my first post!', like: 18}
         ],
+        newPostText:''
 
     },
 
@@ -70,13 +72,19 @@ export const state:RootStateType = {
 
 }
 
-export const addPost = (postMessage: string) => {
+export const addPost = () => {
     let newPost = {
         id: 5,
-        message: postMessage,
+        message: state.profilePage.newPostText,
         like: 0
     }
     state.profilePage.posts.push(newPost)
+    updateNewPostText('')
+    RenderEntireTree(state)
+}
+
+export const updateNewPostText = (newText: string) => {
+    state.profilePage.newPostText = newText;
     RenderEntireTree(state)
 }
 

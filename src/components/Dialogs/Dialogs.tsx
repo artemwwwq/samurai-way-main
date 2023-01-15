@@ -3,12 +3,11 @@ import s from './Dialogs.module.css'
 import {NavLink} from "react-router-dom";
 import DialogItem from "./DialogItem/DialogItem";
 import DialogMessages from "./DialogMessage/DialogMessages";
-import {DialogsType, MessagesType} from "../../Redux/state";
+import {DialogsType, MessagePageType, MessagesType, ProfilePageType} from "../../Redux/state";
 
 
 type AppPropsType ={
-    dialogs: Array<DialogsType>
-    messages: Array<MessagesType>
+    messagePage: MessagePageType
 }
 
 
@@ -17,8 +16,8 @@ function Dialogs(props: AppPropsType) {
 
 
 
-    const dialogsMapEl = props.dialogs.map( d=> <DialogItem name={d.name} id={d.id}/> )
-    const messagesMapEl = props.messages.map( m=> <DialogMessages message={m.message}/> )
+    const dialogsMapEl = props.messagePage.dialogs.map( d=> <DialogItem key={d.id} name={d.name} id={d.id}/> )
+    const messagesMapEl = props.messagePage.messages.map( m=> <DialogMessages key={m.id} message={m.message}/> )
     let addMassegeEl = useRef<HTMLTextAreaElement>(null)
 
     const addMessage = () => {

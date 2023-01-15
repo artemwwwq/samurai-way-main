@@ -7,7 +7,7 @@ import { RootStateType, state} from "./Redux/state";
 export const RenderEntireTree = (state: RootStateType) => {
     ReactDOM.render(
         <BrowserRouter>
-            <App/>,
+            <App />,
         </BrowserRouter>,
         document.getElementById('root')
     )
