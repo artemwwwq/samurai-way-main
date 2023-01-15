@@ -5,39 +5,18 @@ import NavBar from "./components/Navbar/NavBar";
 import Profile from "./components/Propfile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
-import {PostPropsType} from "./components/Propfile/MyPosts/Post/Posts";
-import {addPost} from "./Redux/state";
-
-export type IndexPropsType = {
-    appState: {
-        profilePage: {
-            posts: Array<PostPropsType>
-        }
-        messagePage: {
-            messages: Array<MessagesType>
-            dialogs: Array<DialogsType>
-        }
-
-
-    }
-    addPost: (postMessage: string)=> void
-}
+import {addPost, state} from './Redux/state'
 
 
 
 
-    export type DialogsType = {
-    id: number
-    name: string
-}
-
-export type MessagesType = {
-    id: number
-    message: string
-}
 
 
-function App(props: IndexPropsType) {
+
+
+
+
+function App() {
 
 
     return (
@@ -46,9 +25,9 @@ function App(props: IndexPropsType) {
                 <Header/>
                 <NavBar/>
                 <div className='app-wrapper-content'>
-                    <Route path='/Profile' render={() => <Profile posts={props.appState.profilePage.posts} addPost={props.addPost}/>}/>
-                    <Route path='/Dialogs' render={() => <Dialogs dialogs={props.appState.messagePage.dialogs}
-                                                                  messages={props.appState.messagePage.messages}/>}/>
+                    <Route path='/Profile' render={() => <Profile posts={state.profilePage.posts} addPost={addPost}/>}/>
+                    <Route path='/Dialogs' render={() => <Dialogs dialogs={state.messagePage.dialogs}
+                                                                  messages={state.messagePage.messages}/>}/>
                 </div>
             </div>
         </BrowserRouter>

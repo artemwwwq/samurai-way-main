@@ -1,6 +1,43 @@
+import {RenderEntireTree} from "../render";
 
 
-const state = {
+
+
+export type MessagesType = {
+    id: number
+    message: string
+}
+
+export type DialogsType = {
+    id: number
+    name: string
+}
+
+export type PostPropsType ={
+    id: number
+    message: string
+    like: number
+}
+
+type ProfilePageType = {
+    posts: Array<PostPropsType>
+}
+
+type MessagePageType = {
+
+        messages: Array<MessagesType>
+        dialogs: Array<DialogsType>
+}
+
+
+export type RootStateType = {
+    profilePage: ProfilePageType
+    messagePage: MessagePageType
+}
+
+
+
+export const state:RootStateType = {
 
     profilePage: {
         posts: [
@@ -40,6 +77,6 @@ export const addPost = (postMessage: string) => {
         like: 0
     }
     state.profilePage.posts.push(newPost)
+    RenderEntireTree(state)
 }
 
-export default state;

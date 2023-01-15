@@ -1,6 +1,7 @@
 import React, {RefObject, useRef} from "react";
 import s from './MyPosts.module.css'
-import Posts, {PostPropsType} from "./Post/Posts";
+import Posts from "./Post/Posts";
+import {PostPropsType} from "../../../Redux/state";
 
 
 export type postPropsType = {
@@ -10,7 +11,7 @@ export type postPropsType = {
 
 function MyPosts(props: postPropsType) {
 
-    const postsMapEl = props.posts.map( m=> <Posts message={m.message} like={m.like}/>)
+    const postsMapEl = props.posts.map( m=> <Posts id={m.id} message={m.message} like={m.like}/>)
 
     let newPostEl = useRef<HTMLTextAreaElement>(null)
 
@@ -18,6 +19,7 @@ function MyPosts(props: postPropsType) {
         if(newPostEl.current !== null){
             let text = newPostEl.current.value
             props.addPost(text)
+            newPostEl.current.value = '';
         }
 
     }

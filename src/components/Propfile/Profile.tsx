@@ -2,7 +2,8 @@ import React from "react";
 import s from './Profile.module.css'
 import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./PropfileInfo/ProfileInfo";
-import {PostPropsType} from "./MyPosts/Post/Posts";
+import {PostPropsType} from "../../Redux/state";
+
 
 type AppPropsType = {
     posts: Array<PostPropsType>

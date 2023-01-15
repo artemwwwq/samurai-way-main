@@ -1,10 +1,9 @@
 import React from "react";
 import s from './Posts.module.css'
+import {PostPropsType} from "../../../../Redux/state";
 
-export type PostPropsType ={
-    message: string
-    like: number
-}
+
+
 
 
 function Posts(props: PostPropsType) {
