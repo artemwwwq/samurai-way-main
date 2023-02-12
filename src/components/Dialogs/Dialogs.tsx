@@ -3,7 +3,11 @@ import s from './Dialogs.module.css'
 import {NavLink} from "react-router-dom";
 import DialogItem from "./DialogItem/DialogItem";
 import DialogMessages from "./DialogMessage/DialogMessages";
-import {DialogsType, MessagePageType, MessagesType, ProfilePageType} from "../../Redux/state";
+import {
+
+    MessagePageType,
+
+} from "../../Redux/state";
 
 
 type AppPropsType ={
@@ -20,11 +24,8 @@ function Dialogs(props: AppPropsType) {
     const messagesMapEl = props.messagePage.messages.map( m=> <DialogMessages key={m.id} message={m.message}/> )
     let addMassegeEl = useRef<HTMLTextAreaElement>(null)
 
-    const addMessage = () => {
-        if(addMassegeEl.current !== null) {
-            alert(addMassegeEl.current.value)
-        }
-    }
+
+
 
     return (
         <div className={s.dialogs}>
@@ -33,8 +34,10 @@ function Dialogs(props: AppPropsType) {
             </div>
             <div className={s.messages}>
                 {messagesMapEl}
-                <textarea ref={addMassegeEl}></textarea>
-                <button onClick={addMessage}>send message</button>
+                <textarea ref={addMassegeEl}
+                          value={props.messagePage.newMassageText}
+                ></textarea>
+                <button>send message</button>
             </div>
 
         </div>
