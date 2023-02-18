@@ -1,16 +1,16 @@
-import React, {useRef} from "react";
+import React, {ChangeEvent, useRef} from "react";
 import s from './Dialogs.module.css'
 import {NavLink} from "react-router-dom";
 import DialogItem from "./DialogItem/DialogItem";
 import DialogMessages from "./DialogMessage/DialogMessages";
 import {
 
-    MessagePageType,
+    MessagePageType, updateNewPostActionCreator,
 
 } from "../../Redux/state";
 
 
-type AppPropsType ={
+type AppPropsType = {
     messagePage: MessagePageType
 }
 
@@ -18,13 +18,16 @@ type AppPropsType ={
 function Dialogs(props: AppPropsType) {
 
 
-
-
-    const dialogsMapEl = props.messagePage.dialogs.map( d=> <DialogItem key={d.id} name={d.name} id={d.id}/> )
-    const messagesMapEl = props.messagePage.messages.map( m=> <DialogMessages key={m.id} message={m.message}/> )
+    const dialogsMapEl = props.messagePage.dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id}/>)
+    const messagesMapEl = props.messagePage.messages.map(m => <DialogMessages key={m.id} message={m.message}/>)
     let addMassegeEl = useRef<HTMLTextAreaElement>(null)
 
+    const onChangeDialogMessage = () => {
+        if(addMassegeEl.current !== null) {
+            let newText = addMassegeEl.current.value
 
+        }
+    }
 
 
     return (
@@ -36,6 +39,7 @@ function Dialogs(props: AppPropsType) {
                 {messagesMapEl}
                 <textarea ref={addMassegeEl}
                           value={props.messagePage.newMassageText}
+                          onChange={onChangeDialogMessage}
                 ></textarea>
                 <button>send message</button>
             </div>

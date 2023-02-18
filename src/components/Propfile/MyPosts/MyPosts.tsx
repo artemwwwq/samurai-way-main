@@ -1,7 +1,7 @@
 import React, {useRef} from "react";
 import s from './MyPosts.module.css'
 import Posts from "./Post/Posts";
-import {ActionTypes, ProfilePageType} from "../../../Redux/state";
+import {ActionTypes, addPostActionCreator, ProfilePageType, updateNewPostActionCreator} from "../../../Redux/state";
 
 
 export type postPropsType = {
@@ -17,7 +17,7 @@ function MyPosts(props: postPropsType) {
 
     const addPost = () => {
         if(newPostEl.current !== null){
-            props.dispatch({type: "ADD-POST"})
+            props.dispatch(addPostActionCreator())
         }
 
     }
@@ -25,7 +25,8 @@ function MyPosts(props: postPropsType) {
     const onChangeValue = () => {
         if(newPostEl.current !== null) {
             let newText = newPostEl.current.value
-            props.dispatch({type: "UPDATE-NEW-POST-TEXT", newText})
+            let action = updateNewPostActionCreator(newText)
+            props.dispatch(action)
         }
     }
 
