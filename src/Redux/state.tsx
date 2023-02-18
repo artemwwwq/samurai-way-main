@@ -2,11 +2,22 @@
 export type StoreType = {
     _state: RootStateType
     _renderEntire: ()=> void
-    addPost: ()=>void
-    updateNewPostText: (newText: string)=> void
     subscribe: (observer: ()=> void)=> void
     getState: ()=> RootStateType
+    dispatch: (action: ActionTypes) => void
 }
+
+
+type AddPostActionType = {
+    type: 'ADD-POST'
+}
+
+type UpdateNewPostTextActionType = {
+    type: 'UPDATE-NEW-POST-TEXT'
+    newText: string
+}
+
+export type ActionTypes = AddPostActionType | UpdateNewPostTextActionType
 
 export const store: StoreType = {
     _state: {
@@ -44,26 +55,28 @@ export const store: StoreType = {
     _renderEntire() {
 
     },
-    addPost() {
-        let newPost : PostPropsType = {
-            id: 5,
-            message: store._state.profilePage.newPostText,
-            like: 0
-        }
-        this._state.profilePage.posts.push(newPost)
-        this.updateNewPostText('')
-        this._renderEntire()
-    },
-    updateNewPostText (newText: string) {
-        this._state.profilePage.newPostText = newText;
-        this._renderEntire()
-    },
     subscribe (observer: ()=> void) {
         this._renderEntire = observer
     },
 
     getState() {
         return this._state
+    },
+
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost : PostPropsType = {
+                id: 5,
+                message: store._state.profilePage.newPostText,
+                like: 0
+            }
+            this._state.profilePage.posts.push(newPost)
+            this._state.profilePage.newPostText = ''
+            this._renderEntire()
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText;
+            this._renderEntire()
+        }
     }
 }
 

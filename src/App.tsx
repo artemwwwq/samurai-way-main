@@ -21,8 +21,7 @@ const App: React.FC<StorePropsType> = (props) => {
                 <NavBar/>
                 <div className='app-wrapper-content'>
                     <Route path='/Profile' render={() => <Profile profilePage={props.store._state.profilePage}
-                                                                  addPost={props.store.addPost.bind(props.store)}
-                                                                  updateNewPostText={props.store.updateNewPostText.bind(props.store)}/>}/>
+                                                                  dispatch={props.store.dispatch.bind(props.store)}/>}/>
                     <Route path='/Dialogs' render={() => <Dialogs messagePage={props.store._state.messagePage}
 
                     />}/>
