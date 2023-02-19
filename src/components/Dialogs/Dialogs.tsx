@@ -1,14 +1,9 @@
-import React, {ChangeEvent, useRef} from "react";
+import React, {ChangeEvent} from "react";
 import s from './Dialogs.module.css'
-import {NavLink} from "react-router-dom";
 import DialogItem from "./DialogItem/DialogItem";
 import DialogMessages from "./DialogMessage/DialogMessages";
-import {
-    ActionTypes,
-
-    MessagePageType, onChangeNewMessageAC, updateMessageAC, updateNewPostActionCreator,
-
-} from "../../Redux/state";
+import {onChangeNewMessageAC, updateMessageAC} from "../../Redux/dialogs-reducer";
+import {ActionTypes, MessagePageType} from "../../Redux/state";
 
 
 type AppPropsType = {
