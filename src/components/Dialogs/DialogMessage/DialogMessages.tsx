@@ -5,8 +5,8 @@ type messagePropsType ={
 }
 const DialogMessages = (props: messagePropsType) => {
     return (
-    <div className={s.message}>{props.message}
-
+    <div className={s.message}>
+        {props.message}
     </div>
     )
 }

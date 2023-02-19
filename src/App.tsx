@@ -23,6 +23,7 @@ const App: React.FC<StorePropsType> = (props) => {
                     <Route path='/Profile' render={() => <Profile profilePage={props.store._state.profilePage}
                                                                   dispatch={props.store.dispatch.bind(props.store)}/>}/>
                     <Route path='/Dialogs' render={() => <Dialogs messagePage={props.store._state.messagePage}
+                                                                  dispatch={props.store.dispatch.bind(props.store)}
 
                     />}/>
                 </div>
