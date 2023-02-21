@@ -2,28 +2,30 @@ import React, {ChangeEvent} from "react";
 import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import DialogMessages from "./DialogMessage/DialogMessages";
-import {onChangeNewMessageAC, updateMessageAC} from "../../Redux/dialogs-reducer";
-import {ActionTypes, MessagePageType} from "../../Redux/state";
+import {MessagePageType} from "../../Redux/store";
 
 
 type AppPropsType = {
-    messagePage: MessagePageType
-    dispatch: (action: ActionTypes)=> void
+    dialogPage: MessagePageType
+    onChangeDialogMessage: (dialogMessage: string) => void
+    onClickSendMessageHandler: ()=> void
 }
 
 
 function Dialogs(props: AppPropsType) {
 
 
-    const dialogsMapEl = props.messagePage.dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id}/>)
-    const messagesMapEl = props.messagePage.messages.map(m => <DialogMessages key={m.id} message={m.message}/>)
+
+
+    const dialogsMapEl = props.dialogPage.dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id}/>)
+    const messagesMapEl = props.dialogPage.messages.map(m => <DialogMessages key={m.id} message={m.message}/>)
 
     const onChangeDialogMessage = (e:ChangeEvent<HTMLTextAreaElement>) => {
-            props.dispatch(onChangeNewMessageAC(e.currentTarget.value))
+            props.onChangeDialogMessage(e.currentTarget.value)
     }
 
     const onClickSendMessageHandler = () => {
-            props.dispatch(updateMessageAC())
+            props.onClickSendMessageHandler()
         }
 
 
@@ -36,7 +38,7 @@ function Dialogs(props: AppPropsType) {
             <div className={s.messages}>
                 {messagesMapEl}
                 <textarea
-                          value={props.messagePage.newMassageText}
+                          value={props.dialogPage.newMassageText}
                           onChange={onChangeDialogMessage}
                 ></textarea>
                 <button onClick={onClickSendMessageHandler}>send message</button>

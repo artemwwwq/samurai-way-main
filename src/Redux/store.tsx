@@ -36,7 +36,7 @@ export type MessagePageType = {
 
 export type RootStateType = {
     profilePage: ProfilePageType
-    messagePage: MessagePageType
+    dialogPage: MessagePageType
 }
 
 
@@ -67,7 +67,7 @@ export const store: StoreType = {
 
         },
 
-        messagePage: {
+        dialogPage: {
 
             messages: [
                 {id: 1, message: 'Hi, my dear friend'},
@@ -103,7 +103,7 @@ export const store: StoreType = {
 
     dispatch(action) {
         this._state.profilePage = profileReducer(this._state.profilePage, action)
-        this._state.messagePage = dialogsReducer(this._state.messagePage, action)
+        this._state.dialogPage = dialogsReducer(this._state.dialogPage, action)
         this._renderEntire()
     }
 }

@@ -1,13 +1,13 @@
-import React, {ChangeEvent, useRef} from "react";
+import React, {ChangeEvent} from "react";
 import s from './MyPosts.module.css'
 import Posts from "./Post/Posts";
-import {addPostActionCreator, updateNewPostActionCreator} from "../../../Redux/Propfile-reducer";
-import {ActionTypes, ProfilePageType} from "../../../Redux/state";
+import {ProfilePageType} from "../../../Redux/store";
 
 
 export type postPropsType = {
     profilePage: ProfilePageType
-    dispatch: (action: ActionTypes) => void
+    updateNewPostText: (newText: string)=> void
+    addPost: ()=> void
 }
 
 function MyPosts(props: postPropsType) {
@@ -15,13 +15,12 @@ function MyPosts(props: postPropsType) {
     const postsMapEl = props.profilePage.posts.map(m=> <Posts key={m.id} id={m.id} message={m.message} like={m.like}/>)
 
     const addPost = () => {
-            props.dispatch(addPostActionCreator())
+            props.addPost()
     }
 
     const onChangeValue = (e: ChangeEvent<HTMLTextAreaElement>) => {
             let newText = e.currentTarget.value
-            let action = updateNewPostActionCreator(newText)
-            props.dispatch(action)
+            props.updateNewPostText(newText)
         }
 
 
