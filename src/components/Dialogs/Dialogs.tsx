@@ -2,17 +2,11 @@ import React, {ChangeEvent} from "react";
 import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import DialogMessages from "./DialogMessage/DialogMessages";
-import {MessagePageType} from "../../Redux/store";
+import {MapDialogPropsType} from "./DialogsContainer";
 
 
-type AppPropsType = {
-    dialogPage: MessagePageType
-    onChangeDialogMessage: (dialogMessage: string) => void
-    onClickSendMessageHandler: ()=> void
-}
 
-
-function Dialogs(props: AppPropsType) {
+function Dialogs(props: MapDialogPropsType) {
 
 
 

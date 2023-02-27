@@ -4,14 +4,14 @@ import {dialogsReducer, onChangeNewMessageAC, updateMessageAC} from "./dialogs-r
 
 
 
-const reducers = combineReducers({
+const rootReducer = combineReducers({
     profilePage : profileReducer,
     dialogPage : dialogsReducer
 })
 
-export type RootReducerType = typeof reducers
-
-export type ReduxStoreType = typeof store
+export type RootReducerType = ReturnType<typeof rootReducer>
 
 
-export const store = createStore(reducers)
+
+
+export const store = createStore(rootReducer)

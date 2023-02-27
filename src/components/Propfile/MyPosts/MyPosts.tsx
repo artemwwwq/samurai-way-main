@@ -1,21 +1,17 @@
 import React, {ChangeEvent} from "react";
 import s from './MyPosts.module.css'
 import Posts from "./Post/Posts";
-import {ProfilePageType} from "../../../Redux/store";
+import {MyPostMapProps} from "./MyPostContainer";
 
 
-export type postPropsType = {
-    profilePage: ProfilePageType
-    updateNewPostText: (newText: string)=> void
-    addPost: ()=> void
-}
 
-function MyPosts(props: postPropsType) {
 
-    const postsMapEl = props.profilePage.posts.map(m=> <Posts key={m.id} id={m.id} message={m.message} like={m.like}/>)
+function MyPosts(props: MyPostMapProps) {
+
+    const postsMapEl = props.posts.map(m=> <Posts key={m.id} id={m.id} message={m.message} like={m.like}/>)
 
     const addPost = () => {
-            props.addPost()
+        props.addPost()
     }
 
     const onChangeValue = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -32,7 +28,7 @@ function MyPosts(props: postPropsType) {
             <div>
                 <textarea
                           onChange={onChangeValue}
-                          value={props.profilePage.newPostText}
+                          value={props.newPostText}
                 ></textarea>
             </div>
             <div>

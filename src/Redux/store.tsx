@@ -5,23 +5,23 @@ import {
 } from "./Propfile-reducer";
 import {dialogsReducer, onChangeNewMessageAC, updateMessageAC} from "./dialogs-reducer";
 
-export type MessagesType = {
+ type MessagesType = {
     id: number
     message: string
 }
 
-export type DialogsType = {
+ type DialogsType = {
     id: number
     name: string
 }
 
-export type PostPropsType = {
+ type PostPropsType = {
     id: number
     message: string
     like: number
 }
 
-export type ProfilePageType = {
+ type ProfilePageType = {
     posts: Array<PostPropsType>
     newPostText: string
 }

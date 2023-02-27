@@ -4,24 +4,19 @@ import Header from "./components/Header/Header";
 import NavBar from "./components/Navbar/NavBar";
 import Profile from "./components/Propfile/Profile";
 import {BrowserRouter, Route} from "react-router-dom";
-import {ReduxStoreType} from "./Redux/redux-store";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 
-type StorePropsType = {
-   store: ReduxStoreType
-}
 
-const App: React.FC<StorePropsType> = (props) => {
-    const state = props.store.getState()
 
+const App: React.FC = () => {
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
                 <Header/>
                 <NavBar/>
                 <div className='app-wrapper-content'>
-                    <Route path='/Profile' render={() => <Profile store={props.store}/>}/>
-                    <Route path='/Dialogs' render={() => <DialogsContainer store={props.store}/>}/>
+                    <Route path='/Profile' render={() => <Profile />}/>
+                    <Route path='/Dialogs' render={() => <DialogsContainer />}/>
                 </div>
             </div>
         </BrowserRouter>
