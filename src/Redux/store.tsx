@@ -115,12 +115,41 @@ type StoreType = {
 
 
 
+/*
+{
+    id: 1,
+        followed: true,
+    fullName: 'Artem',
+    status: 'I am a BOSS',
+    location: {city: 'Minsk', country: 'Belarus'}
+},
+{
+    id: 2,
+        followed: true,
+    fullName: 'Alexey',
+    status: 'I am a BOSS',
+    location: {city: 'Russia', country: 'Moscow'}
+},
+{
+    id: 3,
+        followed: false,
+    fullName: 'Tatyana',
+    status: 'I am a BOSS',
+    location: {city: 'Kiev', country: 'Ukraine'}
+},
+{
+    id: 4,
+        followed: false,
+    fullName: 'Kirill',
+    status: 'I am a BOSS',
+    location: {city: 'Minsk', country: 'Belarus'}
+},
 
 
 
 
 
-
+*/
 
 
 
