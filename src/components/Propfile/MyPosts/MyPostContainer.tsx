@@ -15,14 +15,14 @@ export type mapDispatchToProps = {
     updateNewPostText: (newText: string) => void
 }
 
+export type MyPostMapProps = mapStateToPropsType & mapDispatchToProps
+
 const mapStateToProps = (state: RootReducerType): mapStateToPropsType  => {
     return {
         posts: state.profilePage.posts,
         newPostText: state.profilePage.newPostText
     }
 }
-
-export type MyPostMapProps = mapStateToPropsType & mapDispatchToProps
 
 const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToProps => {
     return {

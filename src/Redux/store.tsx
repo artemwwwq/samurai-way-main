@@ -26,7 +26,7 @@ import {dialogsReducer, onChangeNewMessageAC, updateMessageAC} from "./dialogs-r
     newPostText: string
 }
 
-export type MessagePageType = {
+ type MessagePageType = {
 
     messages: Array<MessagesType>
     dialogs: Array<DialogsType>
@@ -34,29 +34,26 @@ export type MessagePageType = {
 }
 
 
-export type RootStateType = {
+ type RootStateType = {
     profilePage: ProfilePageType
     dialogPage: MessagePageType
 }
 
 
-export type StoreType = {
+type StoreType = {
     _state: RootStateType
     _renderEntire: () => void
     subscribe: (observer: () => void) => void
     getState: () => RootStateType
-    dispatch: (action: ActionTypes) => void
+    dispatch: () => void
 }
 
 
-type AddPostActionType = ReturnType<typeof addPostActionCreator>
-type UpdateNewPostTextActionType = ReturnType<typeof updateNewPostActionCreator>
-type addNewMessageType = ReturnType<typeof onChangeNewMessageAC>
-type sendMessageType = ReturnType<typeof updateMessageAC>
 
-export type ActionTypes = AddPostActionType | UpdateNewPostTextActionType | addNewMessageType | sendMessageType
 
-export const store: StoreType = {
+
+
+ /*const store: StoreType = {
     _state: {
         profilePage: {
             posts: [
@@ -101,12 +98,12 @@ export const store: StoreType = {
         return this._state
     },
 
-    dispatch(action) {
+    /!*dispatch() {
         this._state.profilePage = profileReducer(this._state.profilePage, action)
         this._state.dialogPage = dialogsReducer(this._state.dialogPage, action)
         this._renderEntire()
-    }
-}
+    }*!/
+}*/
 
 
 

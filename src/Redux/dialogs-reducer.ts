@@ -1,4 +1,5 @@
-import {ActionTypes} from "./store";
+import {ActionTypes} from "./redux-store";
+
 
 export const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE'
 export const UPDATE_MESSAGE = 'UPDATE-MESSAGE'
@@ -34,21 +35,26 @@ const initialState = {
     newMassageText: '',
 }
 
-export type initionalState = typeof initialState
+export type initialStateType = typeof initialState
 
 
 
-export const dialogsReducer = (state:initionalState = initialState, action: ActionTypes): initionalState => {
+export const dialogsReducer = (state:initialStateType = initialState, action: ActionTypes): initialStateType => {
+
 
     switch (action.type) {
         case ADD_NEW_MESSAGE:
-            state.newMassageText = action.body
-            return state
-        case UPDATE_MESSAGE:
+            return  {...state,
+                newMassageText: action.body
+            }
+
+        case UPDATE_MESSAGE: {
             let newMessage = state.newMassageText
-            state.newMassageText = ''
-            state.messages.push({id: 7, message: newMessage})
-            return state
+            return{...state,
+                newMassageText: '',
+                messages: [...state.messages, {id: 7, message: newMessage}]
+            }
+        }
         default:
             return state
     }

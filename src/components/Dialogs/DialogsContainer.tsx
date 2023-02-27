@@ -1,6 +1,5 @@
 import React from "react";
-import {initionalState, onChangeNewMessageAC, updateMessageAC} from "../../Redux/dialogs-reducer";
-import {ActionTypes} from "../../Redux/store";
+import {initialStateType, onChangeNewMessageAC, updateMessageAC} from "../../Redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
 import {RootReducerType} from "../../Redux/redux-store";
 import {connect} from "react-redux";
@@ -9,7 +8,7 @@ import {Dispatch} from "redux";
 
 
 export type MapStateToProps = {
-    dialogPage: initionalState
+    dialogPage: initialStateType
 }
 
 export type MapDispatchToProps = {
