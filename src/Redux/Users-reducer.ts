@@ -7,12 +7,23 @@ const SET_USERS = 'SET_USERS'
 
 
 export type userArrType = {
-    id: number,
+    /*id: number,
     photoUrl: string
     followed: boolean,
     fullName: string,
     status: string,
-    location: locationType
+    location: locationType*/
+    name: string,
+    id: number,
+    uniqueUrlName: any,
+    photos: PhotosType,
+    status: string,
+    followed: boolean
+}
+
+type PhotosType = {
+    small: string
+    large: string
 }
 
 export type locationType = {
