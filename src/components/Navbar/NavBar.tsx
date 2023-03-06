@@ -13,8 +13,12 @@ function NavBar() {
                 <NavLink to='/Dialogs' activeClassName={s.active} >Messages</NavLink>
             </div>
             <div className={s.item}>
+                <NavLink to='/Users' activeClassName={s.active} >Users</NavLink>
+            </div>
+            <div className={s.item}>
                 <NavLink to='/News'>News</NavLink>
             </div>
+
             <div className={s.item}>
                 <NavLink to='/Music'>Music</NavLink>
             </div>

@@ -21,6 +21,16 @@ export type userArrType = {
     followed: boolean
 }
 
+export type AxiosType = {
+data: ItemsType ;
+}
+
+export type ItemsType = {
+    items: userArrType[]
+}
+
+
+
 type PhotosType = {
     small: string
     large: string
