@@ -21,17 +21,9 @@ export type userArrType = {
     followed: boolean
 }
 
-export type AxiosType = {
-data: ItemsType ;
-}
-
-export type ItemsType = {
-    items: userArrType[]
-}
 
 
-
-type PhotosType = {
+export type PhotosType = {
     small: string
     large: string
 }
@@ -41,14 +33,17 @@ export type locationType = {
     country: string
 }
 
+export type initialStateTypeUsers = {
+    users: Array<userArrType>
+}
+
+
 const initialState: initialStateTypeUsers = {
     users: []
 }
 
 
-export type initialStateTypeUsers = {
-    users: Array<userArrType>
-}
+
 
 
 export const usersReducer = (state: initialStateTypeUsers = initialState, action: ActionTypes): initialStateTypeUsers => {

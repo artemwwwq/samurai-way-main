@@ -9,15 +9,12 @@ import axios from "axios";
 
 export class Users extends React.Component<mapDispatchStateProps> {
 
-    constructor(props: mapDispatchStateProps) {
-        super(props);
-
+    componentDidMount() {
         const axios = require('axios')
         axios.get('https://social-network.samuraijs.com/api/1.0/users').then((response: AxiosType) => {
             this.props.setUsers(response.data.items)
         })
     }
-
 
     render() {
         return (
