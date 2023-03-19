@@ -19,6 +19,7 @@ beforeEach(() => {
             pageSize: 5,
             totalPageCount: 0,
             currentPage: 0,
+            isFetching: true
         }
     }
 )
