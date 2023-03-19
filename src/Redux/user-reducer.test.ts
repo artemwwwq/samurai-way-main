@@ -1,82 +1,56 @@
+
 import react from "react";
 import {followAC, initialStateTypeUsers, setUsersAC, unFollowAC, userArrType, usersReducer} from "./Users-reducer";
-import {mapDispatchStateProps} from "../components/Users/UsersContianer";
+let startState: initialStateTypeUsers
+
+beforeEach(() => {
+        startState = {
+            users: [{
+                name: 'Kirril',
+                id: 5,
+                uniqueUrlName: 'ffasfsdhfryer.fasre.ru',
+                photos: {
+                    small: 'fasfdfhfd',
+                    large: 'fsafgf'
+                },
+                status: 'fsafg',
+                followed: true,
+            }],
+            pageSize: 5,
+            totalPageCount: 0,
+            currentPage: 0,
+        }
+    }
+)
+
 
 test('change followed check', () => {
 
-    const initialState = {
-        users: [
-            {
-            name: 'Kirril',
-            id: 5,
-            uniqueUrlName: 'ffasfsdhfryer.fasre.ru',
-            photos: {
-                small: 'fasfdfhfd',
-                large: 'fsafgf'
-            },
-            status: 'fsafg',
-            followed: false,
-        }
-        ]
-    }
 
     const action = followAC(5)
 
-    const testState = usersReducer(initialState, action)
+    const testState = usersReducer(startState, action)
 
     expect(testState.users[0].followed).toBe(true)
     expect(testState.users[0].id).toBe(5)
 })
 
-test('change unfollowed check', ()=> {
-    const initialState = {
-        users: [
-            {
-                name: 'Kirril',
-                id: 7,
-                uniqueUrlName: 'ffasfsdhfryer.fasre.ru',
-                photos: {
-                    small: 'fasfdfhfd',
-                    large: 'fsafgf'
-                },
-                status: 'fsafg',
-                followed: true,
-            }
-        ]
-    }
+test('change unfollowed check', () => {
 
-    const action = unFollowAC(7)
+    const action = unFollowAC(5)
 
-    const testState = usersReducer(initialState, action)
+    const testState = usersReducer(startState, action)
 
     expect(testState.users[0].followed).toBe(false)
-    expect(testState.users[0].id).toBe(7)
+    expect(testState.users[0].id).toBe(5)
 })
 
 
-test('set users test', ()=> {
-    const initialState = {
-        users: [
-            {
-                name: 'Kirril',
-                id: 7,
-                uniqueUrlName: 'ffasfsdhfryer.fasre.ru',
-                photos: {
-                    small: 'fasfdfhfd',
-                    large: 'fsafgf'
-                },
-                status: 'fsafg',
-                followed: true,
-            }
-        ]
-    }
+test('set users test', () => {
 
+    const action = setUsersAC(startState.users)
 
-
-
-    const action = setUsersAC(initialState.users)
-
-    const testState = usersReducer(initialState, action)
+    const testState = usersReducer(startState, action)
 
     expect(testState.users.length).toBe(2)
 
