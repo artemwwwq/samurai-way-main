@@ -1,6 +1,6 @@
 
 import react from "react";
-import {followAC, initialStateTypeUsers, setUsersAC, unFollowAC, userArrType, usersReducer} from "./Users-reducer";
+import {follow, initialStateTypeUsers, setUsers, unFollow, userArrType, usersReducer} from "./Users-reducer";
 let startState: initialStateTypeUsers
 
 beforeEach(() => {
@@ -28,7 +28,7 @@ beforeEach(() => {
 test('change followed check', () => {
 
 
-    const action = followAC(5)
+    const action = follow(5)
 
     const testState = usersReducer(startState, action)
 
@@ -38,7 +38,7 @@ test('change followed check', () => {
 
 test('change unfollowed check', () => {
 
-    const action = unFollowAC(5)
+    const action = unFollow(5)
 
     const testState = usersReducer(startState, action)
 
@@ -49,7 +49,7 @@ test('change unfollowed check', () => {
 
 test('set users test', () => {
 
-    const action = setUsersAC(startState.users)
+    const action = setUsers(startState.users)
 
     const testState = usersReducer(startState, action)
 
